@@ -15,8 +15,9 @@ function danmu() {
         this.tms = null; //弹幕移动速度定时器
         this.danmuObj = {
             val: '',
-            popSpeed: 100, //弹幕发射速度
-            moveSpeed: 10, //弹幕移动速度
+            popSpeed: 100, //获取弹幕时间
+            moveSpeed: 10, //弹幕移动速度时间
+            moveLength: 2, //弹幕移动速度
             dmSize: 30, //弹幕大小
             dnColor: '#000', //弹幕颜色
             dmHeight: 60 //弹幕高度
@@ -24,9 +25,14 @@ function danmu() {
         this.possibleArr = [];
         this.start();
     };
-    this.sendDanmu = function({ val = '', popSpeed = 10, moveSpeed = 10, dmSize = 30, dnColor = 'red' }) {
+    this.resize = function(w, h) {
+        console.log(w, h);
+        this.canvas.width = w;
+        this.canvas.height = h;
+    };
+    this.sendDanmu = function({ val = '', popSpeed = 10, moveLength = 2, moveSpeed = 10, dmSize = 30, dnColor = 'red' }) {
         console.log(val);
-        this.danmuObj = { val, popSpeed, moveSpeed, dmSize, dnColor, dmHeight: dmSize * 2 };
+        this.danmuObj = { val, popSpeed, moveLength, moveSpeed, dmSize, dnColor, dmHeight: dmSize };
         this.dmWrap.push(this.danmuObj);
         console.log(this.dmWrap);
         if (this.dmWrap.length > 10) {
@@ -72,14 +78,13 @@ function danmu() {
         // console.log(this.draw(this),'lll')
         //绘制弹幕
         this.move = function() {
-            this.x -= 2;
+            this.x -= dammo.moveLength;
             this.draw(_this);
         };
         this.draw = function() {
             // console.log(_this,'_this_this_this')
             _this.ctx.beginPath();
             _this.ctx.font = `${dammo.dmSize}px Arial`;
-            console.log(danmu.dnColor, 'ccccccccccccccccooooooooooooooooo');
             _this.ctx.fillStyle = dammo.dnColor;
             _this.ctx.fillText(dammo.val, this.x, dammo.dmHeight * channel + dammo.dmSize);
 

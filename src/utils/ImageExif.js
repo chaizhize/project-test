@@ -24,6 +24,7 @@ const ImageExif = {
     rotateImage: (image, width, height, orient) => {
         let canvas = document.createElement('canvas');
         let degree = (90 * Math.PI) / 180;
+        console.log(degree);
         let ctx = canvas.getContext('2d');
         console.log(orient, 'ooooooooooooo');
         if (orient) {

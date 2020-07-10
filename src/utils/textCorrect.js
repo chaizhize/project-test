@@ -71,7 +71,11 @@ class TextCorrect {
             isMouseDown
         } = this.state;
         if (isMouseDown) return;
-        this.state.selection = window.getSelection().getRangeAt(0);
+        if (!window.getSelection().anchorNode) {
+            return;
+        }
+        console.log(window.getSelection(), 'dddddddddd');
+        this.state.selection = window.getSelection().getRangeAt(0) || '';
         this.state.selectionText = this.state.selection.toString();
         $('body').css('cssText', 'user-select:text');
 
@@ -117,7 +121,7 @@ class TextCorrect {
             this.characterCorrect();
         }
     }
-    markContent(classN) {
+    markContent(className, color) {
         const {
             el: { textEl },
             selectionText
@@ -126,8 +130,12 @@ class TextCorrect {
         let span = document.createElement('span');
         let id = this.guid();
         span.setAttribute('id', id);
-        span.className += classN + ' ' + 'postil';
+        span.className = className;
+        span.style.color = color;
+        // span.appendChild('{' + selectedText + '}');
         span.appendChild(selectedText);
+        console.log(selectedText);
+        console.log(span);
         this.state.selection.insertNode(span);
         return {
             id,

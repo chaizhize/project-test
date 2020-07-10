@@ -1,5 +1,8 @@
 <template>
     <div class="uploadImage">
+        <img src="../assets/exif3.jpeg" alt="" srcset="" />
+        <el-image style="width: 100px; height: 100px" :src="imgList[0]"></el-image>
+
         <input @change="fileChange($event)" accept="image/*" type="file" id="upload_file" multiple style="display: none" />
         <div class="add" @click="chooseType">
             <div class="add-image" align="center">
@@ -90,6 +93,7 @@ export default {
                                 console.log(newFile, 'nnnnnnnnnnnfffffffffff');
                                 var formData = new FormData();
                                 console.log(file, 'fffffffffffffffffyyyyyyyyyy');
+                                // formData.append('file', file.origin);
                                 formData.append('file', newFile);
                                 console.log(newFile, 'newFilenewFile');
                                 axios({
@@ -212,6 +216,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+#qqq {
+    width: 200px;
+    height: 200px;
+    background-image: url('../assets/wx777777777.jpeg');
+    background-size: 100% 100%;
+}
 .uploadImage {
     .add-image {
         width: 70px;
