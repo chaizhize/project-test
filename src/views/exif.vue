@@ -1,6 +1,6 @@
 <template>
     <div class="uploadImage">
-        <img src="../assets/exif3.jpeg" alt="" srcset="" />
+        <img src="../assets/exif/WechatIMG192.jpeg" alt="" srcset="" />
         <el-image style="width: 100px; height: 100px" :src="imgList[0]"></el-image>
 
         <input @change="fileChange($event)" accept="image/*" type="file" id="upload_file" multiple style="display: none" />
