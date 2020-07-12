@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <div id="nav">
-            <el-button type="primary"><router-link to="/">Home222222222222222</router-link></el-button>
+            <el-button type="primary"><router-link to="/">home哈哈哈哈哈</router-link></el-button>
             <el-button type="success"><router-link to="/about">About</router-link></el-button>
         </div>
         <router-view />
