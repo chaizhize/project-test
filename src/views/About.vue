@@ -16,8 +16,12 @@
                 <el-slider v-model="dmSize"></el-slider>
             </div>
             <div class="danmuclass">
+                停留时间：
+                <el-input-number v-model="pause" :min="1" :max="10" label="描述文字"></el-input-number>
+            </div>
+            <div class="danmuclass">
                 整体弹幕速度：
-                <el-slider v-model="dmSize"></el-slider>
+                <el-slider v-model="moveSpeed"></el-slider>
             </div>
             <div class="danmuclass">
                 单条弹幕速度：
@@ -25,17 +29,14 @@
             </div>
         </div>
 
-        <exif />
         <textCorrect />
     </div>
 </template>
 <script>
 import Danmu from '@/utils/canvasdm.js';
-import exif from './exif';
 import textCorrect from './textCorrect';
 export default {
     components: {
-        exif,
         textCorrect
     },
     data() {
@@ -45,7 +46,7 @@ export default {
             color1: '#409EFF',
             moveSpeed: 10,
             moveLength: 2,
-
+            pause: 3,
             danmu: null
         };
     },
@@ -58,6 +59,7 @@ export default {
     },
     methods: {
         getWrapWH() {
+            if (!this.danmu) return;
             var h = document.querySelector('#about').clientHeight;
             var w = document.querySelector('#about').clientWidth;
             setTimeout(() => {
@@ -75,10 +77,11 @@ export default {
                 console.log(this.size, 'vvvvvv');
                 const data = {
                     val,
-                    dnColor: this.color1,
-                    dmSize: this.dmSize,
+                    dnColor: '#999' || this.color1,
+                    dmSize: 30 || this.dmSize,
                     moveSpeed: this.moveSpeed,
-                    moveLength: this.moveLength
+                    moveLength: 2 || this.moveLength,
+                    pause: 0
                 };
                 this.danmu.sendDanmu(data);
             }, 2000);
@@ -92,10 +95,11 @@ export default {
 
                 const data = {
                     val: this.value,
-                    dnColor: 'red' || this.color1,
-                    dmSize: 90 || this.dmSize,
+                    dnColor: this.color1,
+                    dmSize: this.dmSize,
                     moveSpeed: this.moveSpeed,
-                    moveLength: 1 || this.moveLength
+                    moveLength: this.moveLength,
+                    pause: this.pause
                 };
                 this.danmu.sendDanmu(data);
                 this.value = '';

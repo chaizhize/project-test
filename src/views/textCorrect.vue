@@ -15,7 +15,7 @@
                         颜色：
                         <el-color-picker v-model="color1"></el-color-picker>
                     </div>
-                    <ul class="mark-item">
+                    <ul class="mark-item markTextCorrect">
                         <li @click="currentClass = item.value" :class="{ selectClass: currentClass === item.value }" v-for="(item, index) in classList" :key="index">
                             {{ item.name }}
                         </li>
@@ -227,6 +227,13 @@ export default {
     white-space: pre-wrap;
     white-space: pre-line;
 }
+.markTextCorrect {
+    display: flex;
+    padding: 10px;
+    li {
+        margin-right: 5px;
+    }
+}
 ul,
 li {
     padding: 0;
@@ -238,6 +245,8 @@ li {
     z-index: 99;
     // display: flex;
     background-color: #f3f3f3;
+    background-color: #b5b3e4;
+
     padding: 10;
 }
 

@@ -10,7 +10,7 @@ function danmu() {
         this.dmView = []; //当前画布里面存在的弹幕对象
         this.hasPos = []; //通道占用状态数组
         this.possibleArr = []; //用来进行随机选择通道的数组
-        this.MAX_Channel = 8; //通道数量
+        this.maxChannel = 8; //通道数量
         this.timer = null; //获取弹幕定时器
         this.tms = null; //弹幕移动速度定时器
         this.danmuObj = {
@@ -30,18 +30,18 @@ function danmu() {
         this.canvas.width = w;
         this.canvas.height = h;
     };
-    this.sendDanmu = function({ val = '', popSpeed = 10, moveLength = 2, moveSpeed = 10, dmSize = 30, dnColor = 'red' }) {
+    this.sendDanmu = function({ val = '', popSpeed = 10, moveLength = 2, moveSpeed = 10, dmSize = 30, dnColor = 'red', pause = 0 }) {
         console.log(val);
-        this.danmuObj = { val, popSpeed, moveLength, moveSpeed, dmSize, dnColor, dmHeight: dmSize };
+        this.danmuObj = { val, popSpeed, moveLength, moveSpeed, dmSize, dnColor, dmHeight: dmSize, pause };
         this.dmWrap.push(this.danmuObj);
         console.log(this.dmWrap);
-        if (this.dmWrap.length > 10) {
-            this.getDanmu();
-        }
+        // if (this.dmWrap.length > 10) {
+        //     this.getDanmu();
+        // }
     };
     this.start = function() {
         var _this = this;
-        for (var i = 0; i < this.MAX_Channel; i++) {
+        for (var i = 0; i < this.maxChannel; i++) {
             this.hasPos[i] = true;
         }
 
@@ -77,10 +77,25 @@ function danmu() {
         this.x = _this.width;
         // console.log(this.draw(this),'lll')
         //绘制弹幕
-        this.move = function() {
-            this.x -= dammo.moveLength;
-            this.draw(_this);
-        };
+
+        if (dammo.pause > 0) {
+            var moveLength = dammo.moveLength;
+            setTimeout(() => {
+                moveLength = 0;
+            }, 5000);
+            setTimeout(() => {
+                moveLength = dammo.moveLength;
+            }, dammo.pause * 1000 + 5000);
+            this.move = function() {
+                this.x -= moveLength;
+                this.draw(_this);
+            };
+        } else {
+            this.move = function() {
+                this.x -= dammo.moveLength;
+                this.draw(_this);
+            };
+        }
         this.draw = function() {
             // console.log(_this,'_this_this_this')
             _this.ctx.beginPath();
@@ -94,7 +109,7 @@ function danmu() {
     //检测轨道情况，并在空闲轨道中随机选取一条，没有则返回-1
     this.getChannel = function() {
         this.possibleArr = [];
-        for (var i = 0; i < this.MAX_Channel; i++) {
+        for (var i = 0; i < this.maxChannel; i++) {
             if (this.hasPos[i]) {
                 this.possibleArr.push(i);
             }
