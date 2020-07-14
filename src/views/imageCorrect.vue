@@ -4,7 +4,7 @@
             <p v-for="(item, index) in correctList" :key="index" @click="handleCorrectClick(item)" :id="item.id">{{ item.name }}</p>
         </div>
         <div id="canvas-container">
-            <canvas id="canvas" width="600" height="400"></canvas>
+            <canvas id="canvasImage" width="600" height="400"></canvas>
             <canvas id="watermark_canvas" style="display: none;"></canvas>
         </div>
     </div>
@@ -55,12 +55,12 @@ export default {
         this.imgCorrectInit();
     },
     methods: {
-        imageCorrectInit() {
-            console.log(222);
-            ImageCorrect(document.getElementById('canvas'));
-        },
+        // imageCorrectInit() {
+        //     console.log(222);
+        //     ImageCorrect(document.getElementById('#canvasImage'));
+        // },
         imgCorrectInit() {
-            this.ImageCorrect = ImageCorrect(document.getElementById('canvas'));
+            this.ImageCorrect = ImageCorrect(document.getElementById('canvasImage'));
             this.ImageCorrect.chooseImage('https://img.ivsky.com/img/tupian/li/202002/09/dongji-005.jpg'); //跨域图片
             this.ImageCorrect.chooseImage('https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=165325591,2666413465&fm=26&gp=0.jpg'); //跨域图片
         },
@@ -75,8 +75,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-canvas {
+<style lang="scss" scoped>
+#canvasImage {
     display: block;
     margin: auto;
     border: 1px solid #333;

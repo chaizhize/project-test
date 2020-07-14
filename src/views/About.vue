@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <!-- <textCorrect /> -->
+        <imageCorrect />
     </div>
 </template>
 <script>
@@ -38,6 +38,7 @@ import Danmu from '@/utils/canvasdm.js';
 export default {
     components: {
         // textCorrect
+        imageCorrect: () => import('./imageCorrect')
     },
     data() {
         return {
@@ -121,7 +122,7 @@ export default {
     }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 #canvas {
     position: absolute;
     top: 0;
@@ -141,6 +142,7 @@ export default {
 #about {
     /* display: flex; */
     position: relative;
-    min-height: 80vh;
+    // min-height: 80vh;
+    min-height: 500px;
 }
 </style>

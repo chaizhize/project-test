@@ -249,15 +249,16 @@ function ImgCorrect() {
                         t.circle = {};
                     } else if (t.isCurrentCorrent.isLine) {
                         var line = {
-                            x: t.lineX,
-                            y: t.lineY,
-                            width: t.lineX,
+                            x: t.line.realX,
+                            y: t.line.realY,
+                            width: e.offsetX,
                             height: t.outerParams.line.lineWidth,
                             clickDrag: t.clickDrag,
                             lineWidth: t.outerParams.line.lineWidth,
                             color: t.outerParams.line.color,
                             time,
-                            type: 'lineArr'
+                            type: 'lineArr',
+                            edit: 'edit'
                         };
                         t.balls.push(line);
                         t.lineX = [];
@@ -275,7 +276,7 @@ function ImgCorrect() {
         this.lineY.push(y);
         this.clickDrag.push(y);
     };
-    this.drawPoint = function(x, y, w, h, clickDrag, lineWidth, color) {
+    this.drawPoint = function(x, y, w, h, clickDrag, lineWidth, color, edit) {
         var i = this.ctx;
         //  var s = {
         //      color: "#ff1e10",
@@ -290,17 +291,26 @@ function ImgCorrect() {
         // if (x > w) {
         // } else {
         // }
-        if (x > w) {
-            for (var s = x; s >= w; s -= 1) {
-                var c = 3 * Math.sin(s / 3) + y;
-                console.log(c);
-                this.ctx.lineTo(s, c);
+
+        if (!edit) {
+            if (x > w) {
+                for (var s = x; s >= w; s -= 1) {
+                    var c = 3 * Math.sin(s / 3) + y;
+                    console.log(c);
+                    this.ctx.lineTo(s, c);
+                }
+            } else {
+                for (var z = x; z < w; z += 1) {
+                    var v = 3 * Math.sin(z / 3) + y;
+                    console.log(v);
+                    this.ctx.lineTo(z, v);
+                }
             }
         } else {
-            for (var z = x; z < w; z += 1) {
-                var v = 3 * Math.sin(z / 3) + y;
-                console.log(v);
-                this.ctx.lineTo(z, v);
+            for (var r = x; r <= w; r++) {
+                var e = 3 * Math.sin(w / 3) + y;
+                console.log(c);
+                this.ctx.lineTo(r, e);
             }
         }
 
@@ -472,8 +482,9 @@ function ImgCorrect() {
                     case 'circleArr':
                         t.drawEllipse(val.x, val.y, val.width, val.height, val.lineWidth, val.color, isDraw);
                         break;
-                    case 'textArr':
-                        t.createText(val.lines, val.x, val.y, val.textArr);
+                    case 'lineArr':
+                        console.log('fffffffffffff', val);
+                        t.drawPoint(val.x, val.y, val.width, val.height, val.edit);
                 }
             });
         }

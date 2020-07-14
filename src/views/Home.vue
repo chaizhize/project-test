@@ -22,12 +22,11 @@ export default {
     // components: { exif, imageCorrect, textCorrect },
     components: {
         exif: () => import('./exif'),
-        imageCorrect: () => import('./imageCorrect'),
         textCorrect: () => import('./textCorrect')
     },
     data() {
         return {
-            menu: ['exif', 'textCorrect', 'imageCorrect'],
+            menu: ['exif', 'textCorrect'],
             componentId: 'exif'
         };
     },
