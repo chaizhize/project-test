@@ -33,7 +33,6 @@
                 ref="upload"
                 class="upload-demo"
                 action="https://api.zhugexuetang.com/v1/upload/upload2"
-                :before-upload="file => handleBeforeUpload(file)"
                 multiple
                 :file-list="fileListImgs2"
                 list-type="picture-card"
