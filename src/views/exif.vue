@@ -60,7 +60,8 @@ export default {
         return {
             imgList: [],
             ImageExif,
-            fileListImgs: []
+            fileListImgs: [],
+            fileListImgs2: []
         };
     },
     mounted() {},

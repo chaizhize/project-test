@@ -234,6 +234,9 @@ export default {
         margin-right: 5px;
     }
 }
+.mark-item {
+    padding: 10px 0;
+}
 ul,
 li {
     padding: 0;

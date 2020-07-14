@@ -29,15 +29,15 @@
             </div>
         </div>
 
-        <textCorrect />
+        <!-- <textCorrect /> -->
     </div>
 </template>
 <script>
 import Danmu from '@/utils/canvasdm.js';
-import textCorrect from './textCorrect';
+// import textCorrect from './textCorrect';
 export default {
     components: {
-        textCorrect
+        // textCorrect
     },
     data() {
         return {
@@ -141,5 +141,6 @@ export default {
 #about {
     /* display: flex; */
     position: relative;
+    min-height: 80vh;
 }
 </style>
