@@ -2,7 +2,7 @@
     <div id="app">
         <div id="nav">
             <el-button type="primary"><router-link to="/">hom     e哈哈哈哈哈11111111111111111111</router-link></el-button>
-            <el-button type="success"><router-link to="/about">About</router-link></el-button>
+            <el-button type="success"><router-link to="/about">About111111111</router-link></el-button>
         </div>
         <router-view />
     </div>
