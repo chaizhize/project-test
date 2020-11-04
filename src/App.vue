@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <div id="nav">
+            3333333333333333333
             <el-button type="primary"><router-link to="/">hom     e哈哈哈哈哈11111111111111111111</router-link></el-button>
             <el-button type="success"><router-link to="/about">About111111111</router-link></el-button>
         </div>
