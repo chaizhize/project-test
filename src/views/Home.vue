@@ -8,6 +8,7 @@
         <!-- <exif class="exif" /> -->
         <!-- <imageCorrect /> -->
         <!-- <textCorrect /> -->
+        <elDialoge @parentClick="parentClick" />
         <component :is="componentId"></component>
     </div>
 </template>
@@ -18,11 +19,13 @@
 // import imageCorrect from './imageCorrect';
 // import textCorrect from './textCorrect';
 // import go from 'gojs';
+import elDialoge from './dialog';
 export default {
     // components: { exif, imageCorrect, textCorrect },
     components: {
         exif: () => import('./exif'),
-        textCorrect: () => import('./textCorrect')
+        textCorrect: () => import('./textCorrect'),
+        elDialoge
     },
     data() {
         return {
@@ -31,7 +34,11 @@ export default {
         };
     },
     mounted() {},
-    methods: {}
+    methods: {
+        parentClick(e) {
+            console.log('e', e);
+        }
+    }
 };
 </script>
 <style lang="scss">
