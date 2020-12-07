@@ -1,7 +1,16 @@
+/*
+ * @Author: your name
+ * @Date: 2020-07-07 17:15:48
+ * @LastEditTime: 2020-12-07 19:12:42
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /vue-cli3/vue.config.js
+ */
 'use strict';
 const path = require('path');
-// const cdnDomain = '//xxx.com/';
-const cdnDomain = '/';
+const cdnDomain = '//www.chaizz.cn/vue2';
+// const cdnDomain = '/';
+
 function resolve(dir) {
     return path.join(__dirname, dir);
 }
