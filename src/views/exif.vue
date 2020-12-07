@@ -1,5 +1,11 @@
 <template>
     <div class="uploadImage">
+        <el-button @click="num++">按钮</el-button>
+        <div>
+            <li v-for="(item,index) in num" :key="index">
+                {{item}}
+            </li>
+        </div>
         <img src="../assets/exif/WechatIMG192.jpeg" alt="" srcset="" />
 
         <!-- <input @change="fileChange($event)" accept="image/*" type="file" id="upload_file" multiple style="display: none" />
@@ -60,10 +66,16 @@ export default {
             imgList: [],
             ImageExif,
             fileListImgs: [],
-            fileListImgs2: []
+            fileListImgs2: [],
+            num:1
         };
     },
     mounted() {},
+    beforeUpdate(){
+    },
+    updated(){
+        // console.log('uuuuuuuuuuuuuuuuuuuuuu');
+    },
     methods: {
         //图片上传前回调
         handleBeforeUpload(file, index) {
@@ -71,7 +83,7 @@ export default {
             console.log('ooooooo');
             return new Promise(resolve => {
                 that.ImageExif.getOrientation(file).then(orient => {
-                    console.log('ppppp');
+                    // console.log('ppppp');
                     let reader = new FileReader();
                     let img = new Image();
                     reader.onload = e => {

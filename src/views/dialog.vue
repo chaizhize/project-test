@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-04 19:44:39
+ * @LastEditTime: 2020-11-25 11:06:38
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /vue-cli3/src/views/dialog.vue
+-->
 <!--  -->
 <template>
     <div class="">
@@ -15,10 +23,10 @@
 <script>
 export default {
     components: {},
-    // props:['dialogVisible'], 
+    // props:['dialogVisible'],
     data() {
         return {
-            dialogVisible:true
+            dialogVisible:false
         };
     },
     computed: {},
