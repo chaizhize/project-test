@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-07-07 17:15:48
- * @LastEditTime: 2020-12-08 15:51:10
+ * @LastEditTime: 2020-12-23 15:50:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli3/src/router/index.js
@@ -21,7 +21,7 @@ const routes = (modulesFiles => {
     }, []);
 })(require.context('./module', false, /\.js$/));
 console.log(routes);
-const router = new Router({ routes, mode: 'history', base: '/vue2/', scrollBehavior: () => ({ y: 0 }) });
+const router = new Router({ routes, mode: 'history', base: '/vue2', scrollBehavior: () => ({ y: 0 }) });
 const whiteList = []; // 不重定向白名单
 router.beforeEach((to, from, next) => {
     // if (store.getters.token) {
